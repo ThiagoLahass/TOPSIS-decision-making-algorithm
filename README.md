@@ -58,4 +58,5 @@ Weights W: [0.3, 0.05, 0.6, 0.05]
 6. **Rank alternatives**:
    - Rank the alternatives based on their proximity measures. Higher values indicate better alternatives.
 
-This README provides a brief overview of the TOPSIS algorithm. For detailed implementation and code examples, refer to the actual algorithm implementation in your preferred programming language.
+This README provides a detailed explanation of the TOPSIS algorithm's steps. For implementation and code examples, refer to the actual algorithm implementation in your preferred programming language.
+
