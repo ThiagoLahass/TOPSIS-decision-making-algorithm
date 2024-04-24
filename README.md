@@ -1,76 +1,39 @@
-# TOPSIS - A Decision Making Algorithm
+# TOPSIS Algorithm README
 
-**Estimated Reading Time: 9 minutes**
+## Summary
 
-## Table of Contents
+The TOPSIS (Technique for Order Preference by Similarity to Ideal Solution) algorithm is a decision-making technique used to determine the best alternative among a set of options based on multiple criteria. It calculates the relative closeness of each alternative to an ideal solution and ranks them accordingly.
 
-1. [Introduction](#introduction)
-2. [Multi-Criteria Decision Making](#multi-criteria-decision-making)
-3. [The TOPSIS Algorithm](#the-topsis-algorithm)
-   - [Step 1](#step-1)
-   - [Step 2](#step-2)
-   - [Step 3](#step-3)
-   - [Step 4](#step-4)
-4. [Example Code](#example-code)
-5. [References](#references)
+## Purpose
 
----
+The purpose of the TOPSIS algorithm is to assist in decision-making processes where there are multiple criteria to consider. It helps in selecting the most suitable alternative by evaluating their performance against the ideal solution.
 
-## Introduction
+## Calculation Method
 
-Throughout our lives, we are faced with a series of decisions, some easy and others extremely difficult. Whether easy or hard, making a choice typically involves alternatives to be chosen based on a set of predefined criteria. A simple example could be choosing a car to buy. Most people consider price, engine power, manufacturer reputation, comfort, etc. These are our criteria for choosing a car, and based on them, we evaluate our alternatives, which could be an HB20, a Pálio, or a Corola, depending on which criteria are most important to each person. Now imagine a more complex decision to be made, such as where to invest a certain amount of money. Can you imagine an algorithm that can assist you in this decision?
+1. **Normalization**: Normalize the decision matrix to bring all criteria on the same scale.
+2. **Weighted Normalization**: Apply weights to the normalized matrix based on the importance of each criterion.
+3. **Ideal Solution Calculation**: Determine the positive ideal solution (for benefit criteria) and negative ideal solution (for cost criteria).
+4. **Distance Calculation**: Calculate the Euclidean distance of each alternative from the ideal solutions.
+5. **Proximity Measure**: Calculate the relative proximity of each alternative to the ideal solutions.
+6. **Ranking**: Rank the alternatives based on their proximity measure, with higher values indicating better alternatives.
 
-...
+## Example
 
----
+Consider a decision matrix D with alternatives A1, A2, A3 and criteria C1, C2, C3, C4:
 
-## The TOPSIS Algorithm
+|       | C1 | C2 | C3  | C4  |
+|-------|----|----|-----|-----|
+| A1    | 15 | 6  | 25000 | 7  |
+| A2    | 12 | 7  | 35000 | 7  |
+| A3    | 10 | 9  | 55000 | 8  |
 
-Below are the step-by-step details of the TOPSIS decision-making algorithm.
+Weights W: [0.3, 0.05, 0.6, 0.05]
 
-### Step 1
+1. Normalize matrix D.
+2. Apply weights to the normalized matrix to get P.
+3. Calculate positive ideal solution A+ and negative ideal solution A-.
+4. Compute distances from A+ and A- for each alternative.
+5. Calculate the proximity measure for each alternative.
+6. Rank the alternatives based on the proximity measure.
 
-Identify the positive ideal solution 
-A
-+
- for benefit criteria and the negative ideal solution 
-A
-−
- for cost criteria, as described below:
-
-\[ A+ = (p+1, p+2, \cdots, p+n) \]
-\[ A- = (p-1, p-2, \cdots, p-n) \]
-
-Where:
-
-\[ p+_{j} = \begin{cases} \max_{i}(p_{ij}), & \text{if the criterion is benefit} \\ \min_{i}(p_{ij}), & \text{if the criterion is cost} \end{cases} \]
-
-\[ p-_{j} = \begin{cases} \min_{i}(p_{ij}), & \text{if the criterion is benefit} \\ \max_{i}(p_{ij}), & \text{if the criterion is cost} \end{cases} \]
-
-...
-
----
-
-## Example Code
-
-```python
-import numpy as np
-
-def normalize_matrix(matrix):
-    return matrix / np.sqrt(np.sum(matrix**2, axis=0))
-
-def weighted_normalized_matrix(matrix, weights):
-    return matrix * weights
-
-# Example usage
-D = np.array([[15, 6, 25000, 7], [12, 7, 35000, 7], [10, 9, 55000, 8]])
-W = np.array([0.3, 0.05, 0.6, 0.05])
-
-# Normalize the matrix
-R = normalize_matrix(D)
-
-# Apply weights
-P = weighted_normalized_matrix(R, W)
-
-# Perform TOPSIS calculations...
-
+This README provides a brief overview of the TOPSIS algorithm. For detailed implementation and code examples, refer to the actual algorithm implementation in your preferred programming language.
