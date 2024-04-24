@@ -1,4 +1,4 @@
-# TOPSIS Algorithm README
+# TOPSIS Algorithm
 
 ## Summary
 
